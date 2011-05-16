@@ -314,9 +314,6 @@ Telia.prepareInviteForm = function(){
 					}
 				  }
 				});
-			//	jQuery.post($(this).attr('action'), $(this).serialize(), function(d, s, xhr){
-			//		console.log(s);
-			//	});
 			} else {
 				return false;
 			}
