@@ -201,6 +201,7 @@ jQuery(document).ready(function ($) {
 			// hide the original select
 			$(this).find('select').hide();
 			
+            $(this).trigger('setWidth');
 			// fire the transformed event - e.g. the transformation is finish
 			$(this).trigger('transformed');
 		});
