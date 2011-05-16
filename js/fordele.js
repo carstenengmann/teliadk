@@ -277,6 +277,8 @@ Telia.prepareInviteForm = function(){
 		$('#invite-friend').click(function(e){
 	    	e.preventDefault();
 	    	lightBox('html', '#invite-form', { width: 650, height: 470 });
+            // make sure the invite form is visible
+            if($('#invite-form').css('opacity') < 1) { $('#invite-form').css('opacity', 1); }
 	    	// set the width of the select boxes
 	    	$('.dropdown').trigger('setWidth');
 	    	
@@ -299,19 +301,19 @@ Telia.prepareInviteForm = function(){
 					data:  $(this).serialize()
 				  , type: 'POST'
 				  ,	error: function(xhr, s, error){
-				  		console.dir(xhr.getAllResponseHeaders());
+				  		//console.dir(xhr.getAllResponseHeaders());
 				  		//console.dir(xhr.statusCode());
-				  		loadAni(true);
+                        loadAni(true);
 						$('#invite-form').fadeTo(500, 1);
 						displayError(['Der er sket en fejl og din invitation er ikke sendt.']);
 					}
 				  ,	success: function(d, s, xhr){
-				  		console.log(s);
-				  }
-				, statusCode: {
-					302: function(a){
-						console.log('302', a);
-					}
+				  		loadAni(true);
+                        var tmpConfirmation = $('<div style="position:absolute;width:490px;text-align:center;"><h3>Din invitation er send.</h3></div>')
+                            .prependTo('.lightBox .contentWrapper .wrap2');
+                        $('.lightBox').bind('close', function(){
+                            $(tmpConfirmation).remove();
+                        });
 				  }
 				});
 			} else {
