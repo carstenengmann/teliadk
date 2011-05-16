@@ -1828,6 +1828,7 @@ form
 	left: -2px;
 	display:none;
 	overflow:hidden;
+    z-index: 100;
   /*max-height:250px;
   overflow:auto;*/
 }
@@ -1839,6 +1840,9 @@ form
 	background:url(../images/form-dropdown-right.png) no-repeat 100% 100%;
   	padding-right:7px;
   	padding-bottom:2px;
+    /* KLUDGE: make sure the list style is not overwritten */
+    list-style-image: none !important;
+    padding-left: 0 !important;
 }
 .dropdown-list .bottom-bg {
 	background:url(../images/form-dropdown-bottom.png) repeat-x 0% 100%;
@@ -1847,22 +1851,26 @@ form
 }
 
 .dropdown li {
-	cursor:pointer;
-	background-repeat:repeat-x;
-	color:#652d86;
-	height:23px;
-	padding: 0 6px 3px;
-	white-space:nowrap;
-	border-top:solid 1px #c5c5c5;
-	background-color:#fff;
+  background-color: #fff;
+  background-repeat: repeat-x;
+  border-top: 1px solid #c5c5c5;
+  color: #652d86;
+  cursor: pointer;
+  height: 23px;
+  line-height: 27px;
+  padding: 0 6px 3px;
+  white-space: nowrap;
+  z-index: 200;
+  /* KLUDGE: make sure the list style is not overwritten */
+  margin-bottom: 0 !important;
 }
 .dropdown li:first-child {
 	border-top:none 0px;
 }
 .dropdown li:hover {
 	background-image:url(../images/form-option-bg.jpg);
-  color:#fff;
-  font-weight:bold;  
+    color:#fff;
+    font-weight:bold;  
 }
 
 /* items */
